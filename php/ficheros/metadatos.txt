@@ -1,0 +1,58 @@
+"CONABIO Metadatos" 
+----- Archivo SHP ----  
+INFO: Open of `C:\Users\lilara\Documents\Downloads\cnlmngw'
+      using driver `ESRI Shapefile' successful.
+
+Layer name: cnlmngw
+Geometry: Line String
+Feature Count: 2828
+Extent: (-97.264602, 25.812993) - (-97.144511, 25.964756)
+Layer SRS WKT:
+GEOGCS["GCS_WGS_1984",
+    DATUM["WGS_1984",
+        SPHEROID["WGS_1984",6378137.0,298.257223563]],
+    PRIMEM["Greenwich",0.0],
+    UNIT["Degree",0.0174532925199433]]
+FNODE_: Real (11.0)
+TNODE_: Real (11.0)
+LPOLY_: Real (11.0)
+RPOLY_: Real (11.0)
+LENGTH: Real (20.5)
+COV_: Real (11.0)
+COV_ID: Real (11.0)
+COTA: Real (20.1)
+--------------  
+----- Archivo TIF----  
+Driver: GTiff/GeoTIFF
+Files: C:\Users\lilara\Documents\Downloads\gdal\a.tif
+Size is 1253, 1005
+Coordinate System is `'
+Origin = (-106.969600599270000,26.175198246442999)
+Pixel Size = (0.008333333768000,-0.008333333768000)
+Image Structure Metadata:
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (-106.9696006,  26.1751982) 
+Lower Left  (-106.9696006,  17.8001978) 
+Upper Right ( -96.5279334,  26.1751982) 
+Lower Right ( -96.5279334,  17.8001978) 
+Center      (-101.7487670,  21.9876980) 
+Band 1 Block=1253x1 Type=Float32, ColorInterp=Gray
+  NoData Value=-9999
+--------------  
+----- Archivo Arc ASCII grid ----  
+Driver: AAIGrid/Arc/Info ASCII Grid
+Files: C:\Users\lilara\Documents\Downloads\gdal\SCEANAHUACU.asc
+Size is 1253, 1005
+Coordinate System is `'
+Origin = (-106.969600599270000,26.175198246442999)
+Pixel Size = (0.008333333768000,-0.008333333768000)
+Corner Coordinates:
+Upper Left  (-106.9696006,  26.1751982) 
+Lower Left  (-106.9696006,  17.8001978) 
+Upper Right ( -96.5279334,  26.1751982) 
+Lower Right ( -96.5279334,  17.8001978) 
+Center      (-101.7487670,  21.9876980) 
+Band 1 Block=1253x1 Type=Float32, ColorInterp=Undefined
+  NoData Value=-9999
+--------------  
