@@ -508,7 +508,7 @@ width: 99%;
 .tree-node-bottom {
   border-bottom: 1px dotted red;
 }
-.tree-node-append .tree-title {
+.tree-node-append .tree-tiLynxtle {
   border: 1px dotted red;
 }
 .tree-editor {
@@ -684,24 +684,129 @@ $(document).ready(function(){
 
 	$('#buscar-taxonomia').click(function(){
 
-		$.ajax({
+		if($('#palabra-clave').val().length <= 3){
+
+			alert('Ingrese mas letras');
+
+		} else {
+
+			$.ajax({
 			url: 'taxonomia.php?q=' + $('#palabra-clave').val(), 
 			type: 'GET', 
 			dataType : "json",
 			contentType: 'application/json',
 			}).done(function(result) {
 				
-				console.log(result);
-				if(result['ok']){
-					console.log('Metadato cerrado!!!');	
-					
-					console.log(result);
+				$('#toxonomy-results tbody').empty();
+
+				var total_results = result['data']['searchTaxon']['totalCount'];
+
+				if(total_results == 0){
+
+					alert('No se encontraron resultados');
 
 				} else {
-					console.log(result['message']);
+
+					var results = result['data']['searchTaxon']['edges'];
+					for (i=0;i<total_results;i++){
+
+						if(results[i] != null){
+
+							if(results[i]['node'] !== null && results[i]['node']['categoria'] == 'especie'){
+								console.log(results[i]);
+
+								var taxo = '<ul>';
+								var biblio = '<ul>'
+								var reino = '';
+								var phylum = '';
+								var clase = '';
+								var orden = '';
+								var familia = '';
+								var genero = '';
+
+								results[i]['node']['arbolTaxonomico'].forEach(tax => {
+
+									if(tax['categoria'] == 'Reino'){
+										reino += '<li>' + 
+													'<b>Reino:</b> ' + tax['taxon'] +
+												'</li>';
+									}
+
+									if(tax['categoria'] == 'phylum'){
+										phylum += '<li>' + 
+													'<b>Phylum:</b> ' + tax['taxon'] +
+												'</li>'
+									}
+
+									if(tax['categoria'] == 'clase'){
+										clase += '<li>' + 
+													'<b>Clase:</b> ' + tax['taxon'] +
+												'</li>'
+									}
+
+									if(tax['categoria'] == 'orden'){
+										orden += '<li>' + 
+													'<b>Orden:</b> ' + tax['taxon'] +
+												'</li>'
+									}
+
+									if(tax['categoria'] == 'familia'){
+										familia += '<li>' + 
+													'<b>Familia:</b> ' + tax['taxon'] +
+												'</li>'
+									}
+
+									if(tax['categoria'] == "género"){
+										genero += '<li>' + 
+													'<b>Género:</b> ' + tax['taxon'] +
+												'</li>'
+									}
+
+								});
+
+								taxo += reino + phylum + clase + orden + familia + genero;
+								taxo += '<li>' + 
+											'<b>Especie:</b> ' + results[i]['node']['taxon'] +
+										'</li>';
+
+								results[i]['node']['bibliografia'].forEach(bib => {
+
+									biblio += '<li>' +
+													bib +
+											 '</li>';
+
+								});
+
+								taxo += '<ul>';
+								biblio += '</ul>';
+
+								$('#toxonomy-results tbody').append(
+									'<tr>' +
+										'<td id="taxo-' + i + '">' +
+											taxo + 
+										'</td>' +
+										'<td id="biblio-' + i + '">' +
+											biblio +
+										'</td>' +
+										'<td>' +
+											'<button type="button" class="add-tax" id="tax-' + i + 
+											'">Agregar</button>' +
+										'</td>' +
+									'</tr>'
+								);
+
+							}
+
+						}
+					}
+
+
 				}
+
 				
 			}); 
+
+		}
 
 	});
 
@@ -2209,10 +2314,72 @@ $(document).on('click','.clsAgregarFilat',function(){
          strNueva_Fila = strNueva_Fila.replace('value="t'+ letra , 'value="t' + letra1 );
         } while(strNueva_Fila.indexOf('value="t' +  letra) >= 0);
  		 // alert(strNueva_Fila);
-  	      $(objTabla).append(strNueva_Fila);
+
+ 		//strNueva_Fila += '<tr></td>Bibliografía: <textarea></textarea></td></tr>';
+  	    $(objTabla).append(strNueva_Fila);
 		if(!$(objTabla).find('tbody').is(':visible')){
 			$(objTabla).find('caption').click();
 		}
+	});
+
+
+$(document).on('click','.add-tax',function(){
+	console.log('ADD BIBLIO');
+	var id_button = this.id.split('-')[1];
+	//console.log(id_button);
+	var biblio = $('#biblio-' + id_button).html();
+	//console.log(biblio);
+	var taxo = $('#taxo-' + id_button).html();
+	console.log($(taxo).find('li:eq(2)').text().split(': ')[1]);
+	var objCuerpo=$('#button_taxones').parents().get(2);
+	var objTabla=$('#button_taxones').parents().get(3);
+	var node= objTabla.childNodes[1].lastChild.cloneNode(true);
+ 	var strNueva_Fila='<tr>'+ node.innerHTML +	'</tr>';
+	 //alert(strNueva_Fila);
+	var pos_letra = strNueva_Fila.indexOf('g_titlet') + 8;
+	var pos_a = strNueva_Fila.substring( pos_letra, pos_letra + 6).indexOf('"');
+	var letra = strNueva_Fila.substring( pos_letra, pos_letra + pos_a ) ;
+	var letra1 = (letra * 1 ) + 1;
+	// alert( letra + "....." + letra1);
+    do { 
+         strNueva_Fila = strNueva_Fila.replace('t' +  letra ,'t'+  letra1 );
+       } while(strNueva_Fila.indexOf('t' +  letra) >= 0);
+          
+		do { 
+         strNueva_Fila = strNueva_Fila.replace('value="t'+ letra , 'value="t' + letra1 );
+        } while(strNueva_Fila.indexOf('value="t' +  letra) >= 0);
+ 		 // alert(strNueva_Fila);
+
+ 		strNueva_Fila += '<tr><td>Bibliografía: '+biblio+'</td></tr>';
+  	    $(objTabla).append(strNueva_Fila);
+		if(!$(objTabla).find('tbody').is(':visible')){
+			$(objTabla).find('caption').click();
+		}
+
+		//console.log($('#t_reino').html());
+		//console.log($('#datosTaxon').html());
+
+		var tax_tree = ['t_reino[]', 't_division[]',  't_clase[]', 't_orden[]', 't_familia[]', 't_genero[]', 't_especie[]', 't_nombrecomun[]']
+
+		var tax_level = 0;
+		tax_tree.forEach(name => {
+			var index_last = -1;
+			var ite = 0;
+			$('.taxones').each(function(){
+				console.log($(this).attr('name'));
+				if($(this).attr('name') === name){	
+					if(ite >= index_last) {
+						index_last = ite;
+					}
+				}
+				ite += 1;
+			})
+			var tax_value = $(taxo).find('li:eq('+tax_level+')').text().split(': ')[1];
+			$('.taxones:eq('+index_last+')').val(tax_value);
+			tax_level += 1;
+		});
+		
+
 	});	
 	
 	
@@ -2694,10 +2861,22 @@ function getDirPath(){
                      <td width="627">&nbsp;</td>
                  </tr>
             </table>
-            <div id="datosTaxon"><?php tabla_t('divDatosTaxon' , 'taxonomía', "taxones", 0 , 0 , 0 ); ?></div>
+            <div class="row">
+            	<div class="col-lg-12">
+            		<div id="bibliography-div" class="container">
+            			
+            		</div>
+            	</div>
+            </div>
+            <div id="datosTaxon"><?php tabla_t('divDatosTaxon' , 'taxonomía', "taxones", 0 , 0 , 0); ?></div>
         </form>
      </div>
      <div  id="div15"  class="element">
+
+     	<br>
+     	<br>
+     	
+     	<h3>Buscar Taxonomía</h3>
      	
      	<div class="container">
 
@@ -2715,9 +2894,30 @@ function getDirPath(){
 	     		</div>
 
      		</div>
-     		<div class="row">
-     			<div class="col-lg-12">
-     				
+
+     		<br>
+     		<br>
+
+     		<div class="row" style="height: 400px;">
+     			<div class="col-lg-12" style="height: 400px; overflow:scroll;">
+     				<table id="toxonomy-results" class="table" style="height: 400px;">
+     					<thead>
+     						<tr>
+     							<th>
+     								Taxonomía
+     							</th>
+     							<th>
+     								Bibliografía
+     							</th>
+     							<th>
+     								Agregar
+     							</th>
+     						</tr>
+     					</thead>
+     					<tbody>
+     						
+     					</tbody>
+     				</table>
      			</div>
      		</div>
      	</div>

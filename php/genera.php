@@ -318,7 +318,7 @@ echo  "<div id=$titulo>";
   echo  "<tfoot>";
    echo  "<tr>";
 	echo  "<td colspan=\"1\" align=\"right\">";
-	 echo  "<input type=\"button\" value=\"Agregar $titulo\" class=\"clsAgregarFilat\">";
+	 echo  "<input type=\"button\" id=\"button_".$class."\" value=\"Agregar $titulo\" class=\"clsAgregarFilat\">";
 	echo  "</td>";
    echo  "</tr>"; 
   echo  "</tfoot>";
