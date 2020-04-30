@@ -2886,10 +2886,11 @@ function getDirPath(){
      			<div class="col-lg-3">
 	     			Palabra clave:
 	     		</div>
-	     		<div class="col-lg-5">
+	     		<div class="col-lg-7">
 	     			<input type="text" id="palabra-clave" class="form-control">
+	     			<?php toolTip("Instroduzca un nombre o parte del nombre de la especie que quiere encontrar"); ?> 
 	     		</div>
-	     		<div class="col-lg-4">
+	     		<div class="col-lg-2">
 	     			<button type="button" id="buscar-taxonomia">Buscar</button>
 	     		</div>
 
@@ -3101,40 +3102,40 @@ function getDirPath(){
 		     		<div class="row">
 		     			<div class="col-lg-6">
 		     				<label>Nombre:</label><br>
-			     			<input type="text" name="nombre" required="true" class="form-control">
+			     			<input type="text" name="nombre" required="true" class="form-control"><?php toolTip("Nombre de pila del capturista"); ?>
 		     			</div>
 		     			<div class="col-lg-6">
-		     				<label>Apellido:</label><br>
-					     	<input type="text" name="apellido"required="true" class="form-control">
+		     				<label>Apellido(s):</label><br>
+					     	<input type="text" name="apellido"required="true" class="form-control"><?php toolTip("Apellido(s) del capturista"); ?> 
 		     			</div>
 		     		</div>
 
 		     		<div class="row">
 		     			<div class="col-lg-6">
 		     				<label>Puesto:</label><br>
-			     			<input type="text" name="puesto" required="true" class="form-control">
+			     			<input type="text" name="puesto" required="true" class="form-control"><?php toolTip("Cargo que desempeña"); ?> 
 		     			</div>
 		     			<div class="col-lg-6">
 		     				<label>Teléfono:</label><br>
-					     	<input type="text" name="telefono" required="true" class="form-control">
+					     	<input type="text" name="telefono" required="true" class="form-control"><?php toolTip("Teléfono del capturista"); ?> 
 		     			</div>
 		     		</div>
 
 			     	<div class="row">
 			     		<div class="col-lg-6">
 			     			<label>Email:</label><br>
-					     	<input type="email" name="email" class="form-control" required="true">
+					     	<input type="email" name="email" class="form-control" required="true"><?php toolTip("Correo electrónico del capturista"); ?> 
 			     		</div>
 			     	</div>
 
 			     	<div class="row">
 			     		<div class="col-lg-6">
 				     		<label>Contraseña:</label><br>
-				     		<input type="password" name="pass" class="form-control" required="true">
+				     		<input type="password" name="pass" class="form-control" required="true"><?php toolTip("Contraseña"); ?> 
 				     	</div>
 				     	<div class="col-lg-6">
 			     			<label>Confimación de contraseña:</label><br>
-			     			<input type="password" name="pass1" class="form-control" required="true">
+			     			<input type="password" name="pass1" class="form-control" required="true"><?php toolTip("Repetir contraseña"); ?>
 			     		</div>
 			     	</div>
 
@@ -3172,10 +3173,11 @@ function getDirPath(){
 		     			<div class="col-lg-6">
 		     				<label>Nombre:</label><br>
 			     			<input type="text" name="nombre" required="true" class="form-control">
+			     			<?php toolTip("Nombre de pila del analista"); ?> 
 		     			</div>
 		     			<div class="col-lg-6">
 		     				<label>Apellido:</label><br>
-					     	<input type="text" name="apellido"required="true" class="form-control">
+					     	<input type="text" name="apellido"required="true" class="form-control"><?php toolTip("Apellido del analista"); ?> 
 		     			</div>
 		     		</div>
 
@@ -3183,10 +3185,11 @@ function getDirPath(){
 		     			<div class="col-lg-6">
 		     				<label>Puesto:</label><br>
 			     			<input type="text" name="puesto" required="true" class="form-control">
+			     			<?php toolTip("Cargo que desempeña"); ?> 
 		     			</div>
 		     			<div class="col-lg-6">
 		     				<label>Teléfono:</label><br>
-					     	<input type="text" name="telefono" required="true" class="form-control">
+					     	<input type="text" name="telefono" required="true" class="form-control"><?php toolTip("Teléfono del analista"); ?> 
 		     			</div>
 		     		</div>
 
@@ -3194,17 +3197,18 @@ function getDirPath(){
 			     		<div class="col-lg-6">
 			     			<label>Email:</label><br>
 					     	<input type="email" name="email" class="form-control" required="true">
+					     	<?php toolTip("Correo electrónico del analista"); ?> 
 			     		</div>
 			     	</div>
 
 			     	<div class="row">
 			     		<div class="col-lg-6">
 				     		<label>Contraseña:</label><br>
-				     		<input type="password" name="pass" class="form-control" required="true">
+				     		<input type="password" name="pass" class="form-control" required="true"><?php toolTip("Contraseña"); ?> 
 				     	</div>
 				     	<div class="col-lg-6">
 			     			<label>Confimación de contraseña:</label><br>
-			     			<input type="password" name="pass1" class="form-control" required="true">
+			     			<input type="password" name="pass1" class="form-control" required="true"><?php toolTip("Repetir contraseña"); ?> 
 			     		</div>
 			     	</div>
 
@@ -3242,10 +3246,11 @@ function getDirPath(){
 		     			<div class="col-lg-6">
 		     				<label>Nombre:</label><br>
 			     			<input type="text" name="nombre" required="true" class="form-control">
+			     			<?php toolTip("Nombre de pila del administrador"); ?> 
 		     			</div>
 		     			<div class="col-lg-6">
 		     				<label>Apellido:</label><br>
-					     	<input type="text" name="apellido"required="true" class="form-control">
+					     	<input type="text" name="apellido"required="true" class="form-control"><?php toolTip("Apellido(s) del administrador"); ?> 
 		     			</div>
 		     		</div>
 
@@ -3253,10 +3258,11 @@ function getDirPath(){
 		     			<div class="col-lg-6">
 		     				<label>Puesto:</label><br>
 			     			<input type="text" name="puesto" required="true" class="form-control">
+			     			<?php toolTip("Cargo que desempeña"); ?> 
 		     			</div>
 		     			<div class="col-lg-6">
 		     				<label>Teléfono:</label><br>
-					     	<input type="text" name="telefono" required="true" class="form-control">
+					     	<input type="text" name="telefono" required="true" class="form-control"><?php toolTip("Teléfono del administrador"); ?> 
 		     			</div>
 		     		</div>
 
@@ -3264,17 +3270,18 @@ function getDirPath(){
 			     		<div class="col-lg-6">
 			     			<label>Email:</label><br>
 					     	<input type="email" name="email" class="form-control" required="true">
+					     	<?php toolTip("Correo electrónico del administrador"); ?> 
 			     		</div>
 			     	</div>
 
 			     	<div class="row">
 			     		<div class="col-lg-6">
 				     		<label>Contraseña:</label><br>
-				     		<input type="password" name="pass" class="form-control" required="true">
+				     		<input type="password" name="pass" class="form-control" required="true"><?php toolTip("Contraseña"); ?> 
 				     	</div>
 				     	<div class="col-lg-6">
 			     			<label>Confimación de contraseña:</label><br>
-			     			<input type="password" name="pass1" class="form-control" required="true">
+			     			<input type="password" name="pass1" class="form-control" required="true"><?php toolTip("Repetir contraseña"); ?> 
 			     		</div>
 			     	</div>
 
@@ -3322,6 +3329,7 @@ function getDirPath(){
 
 					     		?>
 					     	</select>
+					     	<?php toolTip("Seleccione el usuario que desea borrar"); ?> 
 		     			</div>
 		     		</div>
 
